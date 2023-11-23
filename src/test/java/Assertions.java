@@ -1,10 +1,10 @@
 import org.junit.Assert;
-//import org.testing.annotation.Test;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Assertions {
- // @Test
+  @Test
     public void testAssertFunctions() {
 
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
