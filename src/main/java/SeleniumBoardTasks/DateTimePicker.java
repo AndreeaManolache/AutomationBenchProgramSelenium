@@ -1,17 +1,19 @@
+package SeleniumBoardTasks;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class DateTimePicker {
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
         WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         driver.get("http://demo.guru99.com/test/");
 
         //Find the date time picker control
@@ -29,6 +31,5 @@ public class DateTimePicker {
         //Fill time as 02:45 PM
 
         dateBox.sendKeys("0245PM");
-
     }
 }

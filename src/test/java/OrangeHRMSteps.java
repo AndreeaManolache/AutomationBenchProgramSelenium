@@ -4,27 +4,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.concurrent.TimeUnit;
-
+import java.time.Duration;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.By;
 
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
+public class OrangeHRMSteps extends SeleniumTest{
 
-public class OrangeHRMSteps {
+
     public static WebDriver driver;
     @Given("I navigate to the website")
     public void iNavigateToTheWebsite()  {
-
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-        driver = new ChromeDriver();
-        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         driver.manage().window().maximize();
     }
 
@@ -36,7 +28,6 @@ public class OrangeHRMSteps {
         WebElement password=driver.findElement(By.cssSelector("input[type=\"password\"]"));
         password.click();
         password.sendKeys("admin123");
-
     }
 
     @And("Press Login button")
@@ -54,13 +45,10 @@ public class OrangeHRMSteps {
 
     @Given("I access OrangeHRM page")
     public void iAccessOrangeHRMPage() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
         driver = new ChromeDriver();
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         driver.manage().window().maximize();
-
     }
 
     @When("I enter invalid login credentials")
@@ -106,8 +94,8 @@ public class OrangeHRMSteps {
     }
 
     @And("I click the Leave link from the menu")
-    public void iClickTheLeaveLinkFromTheMenu() throws InterruptedException {
-       Thread.sleep(20000);
+    public void iClickTheLeaveLinkFromTheMenu()  {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         WebElement leaveLink=driver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[1]/aside[1]/nav[1]/div[2]/ul[1]/li[3]/a[1]"));
         leaveLink.click();
     }
@@ -131,12 +119,15 @@ public class OrangeHRMSteps {
     }
 
     @And("I click the My Info option from the menu")
-    public void iClickTheMyInfoOptionFromTheMenu() throws InterruptedException {
+    public void iClickTheMyInfoOptionFromTheMenu()  {
 //        WebElement loginButton=driver.findElement(By.xpath("//button[@type='submit']"));
 //        loginButton.click();
-        Thread.sleep(3000);
         WebElement myInfoOption=driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[1]/a/span"));
         myInfoOption.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+//        WebDriverWait wait = new WebDriverWait(initialization.driver, 10);
+//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(myInfoOption)));
+//        (initialization.driver).click();
     }
 
     @And("I click on the Contact Details link which will redirect me to the contactDetails page")

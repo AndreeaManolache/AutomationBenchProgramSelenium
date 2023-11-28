@@ -1,9 +1,11 @@
+package SeleniumBoardTasks;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class SeleniumTasks {
     public static void main(String[] args)  {
@@ -13,7 +15,7 @@ public class SeleniumTasks {
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         driver.getCurrentUrl();
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         driver.manage().window().maximize();
         WebElement username= driver.findElement(By.cssSelector("input[name=\"username\"]"));
         username.click();
@@ -29,9 +31,6 @@ public class SeleniumTasks {
 
 
         //Two ways for get text
-//        WebElement text=driver.findElement(By.xpath("//p[@class='oxd-text oxd-text--p orangehrm-login-forgot-header']"));
-        //  String s=text.getText();
-        //  System.out.println(s);
           String text=driver.findElement(By.xpath("//p[@class='oxd-text oxd-text--p orangehrm-login-forgot-header']")).getText();
           System.out.println(text);
 
@@ -41,9 +40,7 @@ public class SeleniumTasks {
          //Is enabled
         boolean loginButton = driver.findElement(By.xpath("//button[@type='submit']")).isEnabled();
 
-
-
         driver.close(); // closes only a single window that is being accessed by the WebDriver instance currently
-//      driver.quit();// closes all the windows that were opened by the WebDriver instance
+        driver.quit();// closes all the windows that were opened by the WebDriver instance
     }
 }
