@@ -557,5 +557,6 @@ public class OrangeHRMSteps extends SeleniumTest{
     @Then("I can see that the employee ID is displayed in the Selected Employee section by using css selector")
     public void iCanSeeThatTheEmployeeIDIsDisplayedInTheSelectedEmployeeSectionByUsingCssSelector() {
         System.out.println("The employee ID is displayed");
+
     }
 }
